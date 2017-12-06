@@ -1,3 +1,9 @@
+/**
+ * metadataMapperPC2 is developed as a fallback for metadataMapperJSON; as a result this mapper should only be used in
+ * the very rare case that the jsonld based mapper or parser is unable to process a pathway. Due to the limited use cases,
+ * this mapper has been dropped from the API and support has been dropped.
+ */
+
 const convert = require('sbgnml-to-cytoscape');
 const pcServices = require('./../pathway-commons');
 let jp = require('jsonpath');
@@ -69,6 +75,7 @@ function buildBioPaxTree(id) {
     result = pushData(data[4], 'Standard Name', result);
     result = pushData(data[5], 'Cellular Location', result);
 
+    /*
     //Merge Database ID's
     let erefDatabases = data[6];
     let erefDatabaseIds = data[7];
@@ -77,7 +84,7 @@ function buildBioPaxTree(id) {
     if (erefDatabases.length !== 0 || xrefDatabases !== 0) {
       result.push(['Databases', erefDatabases.concat(xrefDatabases)]);
       result.push(['Database IDs', erefDatabaseIds.concat(xrefDatabaseIds)]);
-    }
+    }*/
 
     //Return subtree
     return result;
